@@ -2,6 +2,8 @@
 
 \usepackage{hyperref}
 \usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 
 \let\tablenum\relax
 \usepackage{siunitx}
@@ -11,6 +13,9 @@
 \newcommand\latex{La\TeX}
 
 \usepackage{todonotes}
+
+\DeclareSIUnit\pixel{px}
+\DeclareSIUnit\photon{photon}
 
 % \received{June 1, 2019}
 % \revised{January 10, 2019}
@@ -25,7 +30,7 @@
 
 \begin{document}
 
-\title{Measuring Wind Speed in DM Space on Subaru Coronagraphic Extreme Adaptive Optics Instrument (SCExAO)}
+\title{Measuring Wind Speed on the Subaru Coronagraphic Extreme Adaptive Optics Instrument (SCExAO)}
 
 \author[0000-0001-6341-310X]{Miles Lucas}
 \affiliation{Institute for Astronomy, University of Hawai'i \\
@@ -38,7 +43,7 @@
 \author{Olivier Guyon}
 \affiliation{Subaru Telescope, National Astronomical Observatory of Japan \\ 
 650 North A‘ohōkū Place, Hilo, HI 96720, USA}
-\affiliation{Steward Observatory, The University of Arizona \\
+\affiliation{Steward Observatory, University of Arizona \\
 Tucson, AZ 85721, USA}
 
 \author{Vincent Deo}
@@ -46,7 +51,7 @@ Tucson, AZ 85721, USA}
 650 North A‘ohōkū Place, Hilo, HI 96720, USA}
 
 \begin{abstract}
-
+Here we report on the algorithm we develop for measuring wind speed using adaptive optics telemetry on the Subaru Coronagraphic Extreme AO instrument (SCExAO). Our algorithm uses the cross-correlation of pseudo-open-loop full frame images of the Subaru pupil to measure translation between frames, from which wind speed is derived. We validated our algorithm using simulated turbulence data as well as using the internal light source of the SCExAO testbed-- in both cases accurately retrieving the simulated wind speed. We applied our algorithm to archived on-sky data, retrieving the apparent motion with $\sim$20\% efficacy.
 \end{abstract}
 
 \keywords{}
@@ -56,7 +61,17 @@ Tucson, AZ 85721, USA}
 \input{sections/results}
 \input{sections/conclusions}
 
-\software{}
+\begin{acknowledgements}
+Special thanks to Ryan Dungee for commentary about the UH88 wind speed work.
+\end{acknowledgements}
+
+\facility{Subaru (Optical, Infrared)}
+
+\software{
+\texttt{astropy} \citep{2013A&A...558A..33A,2018AJ....156..123A},
+\texttt{numpy} \citep{harris2020array},
+\texttt{scikit-image} \citep{2014arXiv1407.6245V},
+}
 
 \bibliography{references}{}
 \bibliographystyle{aasjournal}
